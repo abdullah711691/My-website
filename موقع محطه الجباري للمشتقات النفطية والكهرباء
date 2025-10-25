@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مجمع الجباري للمشتقات النفطية والكهرباء</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #e3f2fd; color: #0d1b2a; line-height: 1.6; overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* قسم الشعار الرئيسي */
+        .main-logo-section { 
+            background: linear-gradient(135deg, #0d3b66, #1ca1f2); 
+            padding: 60px 20px; 
+            text-align: center; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+            position: relative;
+            overflow: hidden;
+        }
+        .main-logo-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+        }
+        .logo-design { 
+            background: white; 
+            padding: 40px 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15); 
+            max-width: 600px; 
+            margin: 0 auto; 
+            border: 3px solid #1ca1f2; 
+            transition: transform 0.3s; 
+            position: relative;
+            z-index: 1;
+        }
+        .logo-design:hover { transform: scale(1.05); }
+        .logo-main { 
+            font-size: 42px; 
+            font-weight: bold; 
+            color: #0d3b66; 
+            margin-bottom: 10px; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1); 
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-sub { 
+            font-size: 28px; 
+            color: #1ca1f2; 
+            font-weight: 600; 
+            border-top: 2px solid #0d3b66; 
+            padding-top: 15px; 
+            margin-top: 15px; 
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-tagline { 
+            color: white; 
+            margin-top: 25px; 
+            font-size: 20px; 
+            font-weight: 500; 
+        }
+        
+        /* تأثير الكتابة */
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #0d3b66;
+            margin-right: 2px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        /* صورة الشعار المدورة */
+        .logo-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 20px auto;
+            border: 4px solid #1ca1f2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            position: relative;
+            z-index: 1;
+        }
+        .logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* الهيدر */
+        header { 
+            background: linear-gradient(135deg, #0d3b66, #1ca1f2); 
+            color: white; 
+            padding: 15px 0; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-content { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            font-weight: bold; 
+            color: #ffffff; 
+            cursor: pointer; 
+            transition: transform 0.3s; 
+        }
+        logo:hover { transform: translateY(-3px); }
+        .logo span:first-child { font-size: 24px; margin-left: 8px; }
+        .logo-text { font-size: 18px; }
+
+        nav ul { display: flex; list-style: none; align-items: center; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { 
+            color: white; 
+            text-decoration: none; 
+            font-weight: 500; 
+            transition: all 0.3s; 
+            padding: 8px 12px; 
+            border-radius: 4px; 
+            position: relative;
+            overflow: hidden;
+        }
+        nav ul li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transition: right 0.3s;
+            z-index: -1;
+        }
+        
+        nav ul li a:hover { 
+            color: #0d3b66; 
+            background: #ffffff; 
+        }
+        nav ul li a:hover::before {
+            right: 0;
+        }
+        .jabari-logo { 
+            background: rgba(255, 255, 255, 0.15); 
+            padding: 10px 15px; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            font-size: 16px; 
+            border: 1px solid rgba(255, 255, 255, 0.3); 
+            text-align: center; 
+            transition: all 0.3s; 
+            color: #ffdd00; 
+        }
+        .jabari-logo:hover { 
+            background: rgba(255, 255, 255, 0.25); 
+            transform: translateY(-2px); 
+        }
+        /* Hero Section */
+        .hero { 
+            background: linear-gradient(rgba(13, 59, 102, 0.7), rgba(28, 161, 242, 0.7)), url('https://images.unsplash.com/photo-1633382446551-338a3c3c8c4f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover; 
+            height: 500px; 
+            display: flex; 
+            align-items: center; 
+            text-align: center; 
+            color: white; 
+            position: relative; 
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+        }
+        .hero-content { 
+            position: relative; 
+            z-index: 1; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
+        .hero h1 { 
+            font-size: 48px; 
+            margin-bottom: 20px; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
+        }
+        .hero p { 
+            font-size: 20px; 
+            margin-bottom: 30px; 
+        }
+        .btn { 
+            display: inline-block; 
+            background: #1ca1f2; 
+            color: white; 
+            padding: 12px 30px; 
+            border-radius: 5px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            transition: all 0.3s; 
+            position: relative;
+            overflow: hidden;
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        .btn:hover { 
+            background: #0d3b66; 
+            transform: translateY(-3px); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+        }
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* Services Section */
+        .services { 
+            padding: 80px 0; 
+            background-color: #f0f8ff; 
+        }
+        .section-title { 
+            text-align: center; 
+            margin-bottom: 50px; 
+            font-size: 36px; 
+            color: #0d3b66; 
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #1ca1f2;
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+        }
+        .service-card { 
+            background: white; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+            transition: transform 0.3s; 
+            border-top: 4px solid #1ca1f2; 
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 0;
+            background: rgba(13, 59, 102, 0.05);
+            transition: height 0.3s;
+            z-index: 0;
+        }
+        .service-card:hover::before {
+            height: 100%;
+        }
+        .service-card:hover { transform: translateY(-10px); }
+        .service-icon { 
+            background: #0d3b66; 
+            color: white; 
+            height: 80px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 40px; 
+            position: relative;
+            z-index: 1;
+        }
+        .service-content { 
+            padding: 25px; 
+            position: relative;
+            z-index: 1;
+        }
+        .service-content h3 { margin-bottom: 15px; color: #0d3b66; }
+
+        /* Pricing Section */
+        .pricing { 
+            padding: 80px 0; 
+            background-color: #e3f2fd; 
+        }
+        .pricing-table { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 30px; 
+        }
+        .price-card { 
+            background: white; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+            text-align: center; 
+            transition: transform 0.3s; 
+            border-top: 4px solid #1ca1f2; 
+            position: relative;
+            overflow: hidden;
+        }
+        price-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 0;
+            background: rgba(28, 161, 242, 0.05);
+            transition: height 0.3s;
+        }
+        .price-card:hover::before {
+            height: 100%;
+        }
+        .price-card:hover { transform: scale(1.05); }
+        .price-header { 
+            background: #0d3b66; 
+            color: white; 
+            padding: 20px; 
+            position: relative;
+            z-index: 1;
+        }
+        .price-header h3 { 
+            font-size: 24px; 
+            margin-bottom: 10px; 
+        }
+        .price { 
+            font-size: 36px; 
+            font-weight: bold; 
+        }
+        .price-features { 
+            padding: 25px; 
+            position: relative;
+            z-index: 1;
+        }
+        .price-features ul { 
+            list-style: none; 
+            margin-bottom: 25px; 
+        }
+        .price-features ul li { 
+            padding: 10px 0; 
+            border-bottom: 1px solid #eee; 
+        }
+
+        /* Location Section */
+        .location { 
+            padding: 80px 0; 
+            background-color: #f0f8ff; 
+        }
+        .location-content { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 40px; 
+            align-items: center; 
+        }
+        .map-container { 
+            height: 400px; 
+            border-radius: 10px; 
+            overflow: hidden; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); 
+        }
+        #map { height: 100%; width: 100%; }
+        .location-info h3 { 
+            margin-bottom: 20px; 
+            color: #0d3b66; 
+        }
+        .location-info p { 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: center; 
+            color: #0d1b2a; 
+        }
+        .location-info i { 
+            margin-left: 10px; 
+            color: #1ca1f2; 
+        }
+
+        /* Footer */
+        footer { 
+            background: #0d3b66; 
+            color: white; 
+            padding: 40px 0 20px; 
+        }
+        .footer-content { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 30px; 
+            margin-bottom: 30px; 
+        }
+        .footer-column h3 { 
+            margin-bottom: 20px; 
+            font-size: 20px; 
+        }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 10px; }
+        .footer-column ul li a { 
+            color: #ddd; 
+            text-decoration: none; 
+            transition: color 0.3s; 
+        }
+        .footer-column ul li a:hover { color: #1ca1f2; }
+        .copyright { 
+            text-align: center; 
+            padding-top: 20px; 
+            border-top: 1px solid rgba(255,255,255,0.1); 
+            font-size: 14px; 
+        }
+
+        /* تأثيرات التمرير */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+        
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+        
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; text-align: center; }
+            nav ul { margin-top: 20px; justify-content: center; flex-wrap: wrap; }
+            nav ul li { margin: 5px 10px; }
+            .jabari-logo { margin-top: 10px; order: -1; }
+            .logo-main { font-size: 32px; }
+            .logo-sub { font-size: 20px; }
+            .logo-design { padding: 25px 20px; }
+            .logo-tagline { font-size: 18px; }
+            .hero h1 { font-size: 36px; }
+            .location-content { grid-template-columns: 1fr; }
+            .logo-text { font-size: 16px; }
+            .logo-image { width: 100px; height: 100px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- شعار رئيسي بدل الصورة -->
+    <section class="main-logo-section">
+        <div class="logo-design">
+            <div class="logo-main" id="typing-main"></div>
+            <div class="logo-sub" id="typing-sub"></div>
+            <!-- صورة الشعار المدورة -->
+            <div class="logo-image">
+                <!-- استبدل رابط الصورة برابط الصورة الخاصة بك -->
+            <a href="https://imgbb.com/"><img src="https://i.ibb.co/TDFyZPy0/IMG-20251010-WA0004.jpg" alt="شعار" border="0"></a>
+            </div>
+            <div class="logo-tagline">وقود عالي الجودة وخدمة متميزة
+            
+            </div>
+        </div>
+    </section>
+
+    <!-- الهيدر -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <span></span>
+                    <span class="logo-text">
+                    </span>
+                </div>
+                <nav>
+                    <ul>
+                    
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>وقود عالي الجودة لرحلتك</h1>
+                <p>نقدم أفضل أنواع الغاز والبترول والديزل بأسعار تنافسية وخدمة مميزة</p>
+                <a href="#pricing" class="btn">اطلع على الأسعار</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">خدماتنا</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">⛽</div>
+                    <div class="service-content">
+                        <h3>بنزين عالي الجودة</h3>
+                        <p>أنواع مختلفة من البنزين عالي الجودة لتناسب جميع أنواع السيارات.</p>
+                    </div>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🔥</div>
+                    <div class="service-content">
+                        <h3>غاز طبيعي</h3>
+                        <p>غاز طبيعي مضغوط بجودة عالية وأسعار منافسة مع خدمة سريعة وآمنة.</p>
+                    </div>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚚</div>
+                    <div class="service-content">
+                        <h3>ديزل للشاحنات</h3>
+                        <p>ديزل عالي الجودة للشاحنات والمركبات الثقيلة، أداء أفضل واستهلاك أقل.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">أسعار الوقود</h2>
+            <div class="pricing-table">
+                <div class="price-card slide-in-left">
+                    <div class="price-header">
+                        <h3>بنزين</h3>
+                        <div class="price">21,000 الف</div>
+                    </div>
+                    <div class="price-features">
+                        <ul>
+                            <li>لجميع السيارات</li>
+                            <li>أوكتان عالي</li>
+                            <li>أداء محسن</li>
+                            <li>استهلاك أقل</li>
+                        </ul>
+                        <a href="#location" class="btn">زورونا الآن</a>
+                    </div>
+                </div>
+                <div class="price-card fade-in">
+                    <div class="price-header">
+                        <h3>ديزل</h3>
+                        <div class="price">23,000 الف</div>
+                    </div>
+                    <div class="price-features">
+                        <ul>
+                            <li>للسيارات العادية</li>
+                            <li>جودة مضمونة</li>
+                            <li>سعر اقتصادي</li>
+                            <li>أداء موثوق</li>
+                        </ul>
+                        <a href="#location" class="btn">زورونا الآن</a>
+                    </div>
+                </div>
+                <div class="price-card slide-in-right">
+                    <div class="price-header">
+                        <h3>غاز سائل</h3>
+                        <div class="price">10,000 الف</div>
+                    </div>
+                    <div class="price-features">
+                        <ul>
+                            <li>للمنازل والمطاعم</li>
+                            <li>ضغط عالي</li>
+                            <li>آمن وموثوق</li>
+                            <li>سعر منافس</li>
+                        </ul>
+                        <a href="#location" class="btn">زورونا الآن</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section class="location" id="location">
+        <div class="container">
+            <h2 class="section-title">موقعنا</h2>
+            <div class="location-content">
+                <div class="map-container slide-in-left">
+                    <div id="map"></div>
+                </div>
+                <div class="location-info slide-in-right">
+                    <h3>تفاصيل الموقع</h3>
+                    <p><i>📍</i> محطة باسل ناجي محسن الجباري</p>
+                    <p><i>🕒</i> مفتوح 24/7</p>
+                    <p><i> ‏‪777-053-712 الهاتف‬</i>‬</p>
+                    <p><i>✉️</i> abdullahrbed1@gmail.com</p>
+ استراتيجي يسهل الوصول إليه من جميع أنحاء المدينة، مع مواقف واسعة للسيارات والشاحنات.</p>
+                    <a href="https://maps.google.com/?q=WPJH+JJP, M 45, Aljabara, اليمن" target="_blank" class="btn" style="margin-top: 20px;">افتح في خرائط جوجل</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column fade-in">
+                    <h3>عن المحطة</h3>
+                    <p>نحن محطة وقود رائدة تقدم أفضل أنواع الوقود والخدمات منذ أكثر من 10 سنوات.</p>
+                </div>
+                <div class="footer-column fade-in">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#services">خدماتنا</a></li>
+                        <li><a href="#pricing">الأسعار</a></li>
+                        <li><a href="#location">الموقع</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column fade-in">
+                    <h3>اتصل بنا</h3>
+                    <ul>
+                        <li>📞 فاكس‏‪777-053-712‬‏‏📞الهاتف‏‪713-077-574‬‏ 
+                        ‪‬‏</li>
+                        <li>✉️ abdullahrbed1@gmail.com</li>
+                        <li>📍 خط الجبارة مريس</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; تصميم المهندس عبدالله ربيد🧑🏻‍💻  
+                📞هاتف 780669334  
+            </div>
+        </div>
+    </footer>
+
+    <!-- خرائط جوجل -->
+    <script src="https://maps.google.com/?q=WPJH+JJP, M 45, Aljabara, اليمن" async></script>
+    <script>
+        // تأثير الكتابة
+        function typeEffect(element, text, speed, callback) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, speed);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            
+            typing();
+        }
+        
+        // بدء تأثير الكتابة عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            // تأثير الكتابة للشعار الرئيسي
+            setTimeout(function() {
+                typeEffect(document.getElementById('typing-main'), 'مجمع الجباري', 100, function() {
+                    setTimeout(function() {
+                        document.getElementById('typing-sub').innerHTML = '<span class="typing-cursor"></span>';
+                        typeEffect(document.getElementById('typing-sub'), 'للمشتقات النفطية والكهرباء', 80);
+                    }, 500);
+                });
+            }, 500);
+            
+            // تأثيرات التمرير
+            const fadeElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // تأثير التنقل السلس
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+        
+        function initMap() {
+            const stationLocation = { lat: 15.3694, lng: 44.1910 }; // استبدل بالإحداثيات الصحيحة
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15,
+                center: stationLocation,
+            });
+            const marker = new google.maps.Marker({
+                position: stationLocation,
+                map: map,
+                title: "محطة الجباري",
+            });
+        }
+    </script>
+</body>
+</html>
